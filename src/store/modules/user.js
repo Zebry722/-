@@ -89,7 +89,7 @@ const actions = {
   }
 }
 */
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken, setTimeStamp } from '@/utils/auth'
 import { login, getUserInfo, getUserDetailById } from '@/api/user'
 const state = {
   token: getToken(), // 设置token初始状态   token持久化 => 放到缓存中
@@ -139,8 +139,8 @@ const mutations = {
     removeToken() // 先清除 vuex  再清除缓存 vuex和 缓存数据的同步
   },
   // 设置用户信息
-  setUserInfo(state, userInfo) {
-    state.userInfo = { ...userInfo } // 用 浅拷贝的方式去赋值对象 因为这样数据更新之后，才会触发组件的更新
+  setUserInfo(state, result) {
+    state.userInfo = { ...result } // 用 浅拷贝的方式去赋值对象 因为这样数据更新之后，才会触发组件的更新
   },
   // 删除用户信息
   reomveUserInfo(state) {

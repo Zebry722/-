@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
+import router from '@/router'
 import { Message } from 'element-ui'
 import { getTimeStamp } from '@/utils/auth'
 const TimeOut = 3600 // 定义超时时间
@@ -26,17 +27,15 @@ service.interceptors.request.use(config => {
     }
     return config // 必须要返回的
 }, error => {
-    error => {
-        // error 信息 里面 response的对象
-        if (error.response && error.response.data && error.response.data.code === 10002) {
-            // 当等于10002的时候 表示 后端告诉我token超时了
-            store.dispatch('user/logout') // 登出action 删除token
-            router.push('/login')
-        } else {
-            Message.error(error.message) // 提示错误信息
-        }
-        return Promise.reject(error)
+    // error 信息 里面 response的对象
+    if (error.response && error.response.data && error.response.data.code === 10002) {
+        // 当等于10002的时候 表示 后端告诉我token超时了
+        store.dispatch('user/logout') // 登出action 删除token
+        router.push('/login')
+    } else {
+        Message.error(error.message) // 提示错误信息
     }
+    return Promise.reject(error)
 })
 // 响应拦截器
 service.interceptors.response.use(response => {

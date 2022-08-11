@@ -1,10 +1,10 @@
-Vue.directive('指令名称', {
-    // 会在当前指令作用的dom元素 插入之后执行
-    // options 里面是指令的表达式
-    inserted: function (dom, options) {
+// Vue.directive('指令名称', {
+//     // 会在当前指令作用的dom元素 插入之后执行
+//     // options 里面是指令的表达式
+//     inserted: function (dom, options) {
 
-    }
-})
+//     }
+// })
 
 
 export const imagerror = {

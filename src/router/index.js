@@ -8,8 +8,20 @@ import permissionRouter from './modules/permission'
 import attendancesRouter from './modules/attendances'
 import salarysRouter from './modules/salarys'
 import settingRouter from './modules/setting'
-import socialRouter from './modules/social'
+import socialRouter from './modules/social'// 动态路由
 
+
+// 动态路由
+export const asyncRoutes = [
+  approvalsRouter,
+  departmentsRouter,
+  employeesRouter,
+  permissionRouter,
+  attendancesRouter,
+  salarysRouter,
+  settingRouter,
+  socialRouter
+]
 Vue.use(Router)
 
 /* Layout */
@@ -82,18 +94,5 @@ export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
-
-// 动态路由
-export const asyncRoutes = [
-  approvalsRouter,
-  departmentsRouter,
-  employeesRouter,
-  permissionRouter,
-  attendancesRouter,
-  salarysRouter,
-  settingRouter,
-  socialRouter
-]
-
 
 export default router
